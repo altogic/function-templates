@@ -10,6 +10,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "altogic": "^2.2.2"
+    "altogic": "latest"
   }
 }
