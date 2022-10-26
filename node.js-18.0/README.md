@@ -1,8 +1,8 @@
-# Full-code Services
+# Full-code functions
 
 Altogic provides developers with the option to develop their application business logic either using the no-code drag & drop service designer or coding it for the supported runtimes.
 
-With full-code services (aka cloud functions, lambdas, serverless functions), you can develop your complex business logic, which might not be possible to model using the no-code designer. We strongly suggest developing your services using the no-code designer and switching to full-code services for your specific & complex requirements (e.g., you may need to use/import a specific library package)
+With full-code functions (aka cloud functions, lambdas, serverless functions), you can develop your complex business logic, which might not be possible to model using the no-code service designer. We strongly suggest creating your services using the no-code designer and switching to full-code services for your specific & complex requirements (e.g., you may need to use/import a particular package of library)
 
 With full-code services, you can deploy serverless functions to execute custom code. Each serverless function can be used to handle requests triggered from the below channels:
 
@@ -14,37 +14,37 @@ With full-code services, you can deploy serverless functions to execute custom c
 
 Before writing your function, you need to create your starter project. To create the starter project, you need to use [Altogic CLI](https://www.altogic.com/docs/category/altogic-cli-guides ). Please make sure you have installed Altogic CLI, and that you have successfully logged into your Altogic account. Run `altogic create function` to crate your starter project. 
 
-When writing your own Altogic serverless function, you must export the code in certain ways. The following is an example code for a function written for Node.js runtime.
+When writing your Altogic serverless function, you must export the code in specific ways. The following is an example code for a function written for Node.js runtime.
 
 ```javascript
 const ENV_URL = 'https://c1-na.altogic.com/e:6124d1becc2932001a1afc9a';
 const CLIENT_KEY = 'd123da292bc5450e9a6fb810ed30f8c2';
 
 module.exports = async function (req, res) {
-	// Create a client for interacting with your backend app
-	// You need to provide environment url and client key as input parameters
-	let altogic;
+  // Create a client for interacting with your backend app
+  // You need to provide environment url and client key as input parameters
+  let altogic;
 
-	if (!ENV_URL || !CLIENT_KEY) {
-		console.warn(
-			"Client library environment URL and/or client key variables are not set. Unless these variables are set, the cloud function cannot use Altogic Client Library."
-		);
-	} else altogic = createClient(ENV_URL, CLIENT_KEY);
+  if (!ENV_URL || !CLIENT_KEY) {
+    console.warn(
+      "Client library environment URL and/or client key variables are not set. Unless these variables are set, the cloud function cannot use Altogic Client Library."
+    );
+  } else altogic = createClient(ENV_URL, CLIENT_KEY);
 
-	res.json({
-		quote: "Hello world!",
-	});
+  res.json({
+    quote: "Hello world!",
+  });
 };
 ```
 
 You can also include a **package.json** file along with your function code.
 
-When your function is called, you receive two parameters, a **request** and a **response** object. The request object contains all data that was sent to the function. A schema of the request object can be found below for different request channels.
+When your function is called, you receive two parameters, a **request,** and a **response** object. The request object contains all data that was sent to the function. A schema of the request object can be found below for different request channels.
 
 | Property  | Description                                                  | Endpoint | Message queue | Cron job |
 | --------- | ------------------------------------------------------------ | -------- | ------------- | -------- |
 | ids       | Endpoint path id parameters object                           | Yes      | No            | No       |
-| query     | Reqeust query string parameters                              | Yes      | No            | No       |
+| query     | Request query string parameters                              | Yes      | No            | No       |
 | headers   | Request headers object                                       | Yes      | No            | No       |
 | appParams | App parameters object                                        | Yes      | Yes           | Yes      |
 | client    | Requesting device type and IP information                    | Yes      | No            | No       |
@@ -155,7 +155,7 @@ The response object has two methods, **send()** and **json()** that can be used 
 
 ## Deploying Your Function
 
-You can deploy your serverless functions using [Altogic CLI](https://www.altogic.com/docs/category/altogic-cli-guides ). Make sure you have installed Altogic CLI and you have successfully logged into your Appwrite server. Please ensure you are in the same folder as your `altogic.json` and run `altogic deploy` to deploy your function. You will be prompted to select which environment to deploy if you have multiple execution environments.
+You can deploy your serverless functions using [Altogic CLI](https://www.altogic.com/docs/category/altogic-cli-guides ). Make sure you have installed Altogic CLI and you have successfully logged into your Altogic account. Please ensure you are in the same folder as your `altogic.json` and run `altogic deploy` to deploy your function. You will be prompted to select which environment to deploy if you have multiple execution environments.
 
 When you run the deploy command, Altogic creates a new image and applies this image to your app's execution environment. Depending on the size of your code and its dependencies, it may take a couple of minutes to build and deploy your function. You can run `altogic get deployments` to get the status of your deployment.
 
@@ -166,4 +166,3 @@ After writing and successfully deploying your function to your execution environ
 ## Testing
 
 You can use [Altogic Tester](https://tester.altogic.com) to test your serverless functions using endpoints, message queues, or scheduled tasks (e.g., cron jobs).
-
