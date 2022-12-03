@@ -55,7 +55,7 @@ When your function is called, you receive two parameters, a **request,** and a *
 
 Below you can also find sample data for each request property.
 
-```json
+```js
 //ids
 //https://myapp123.c1-na.altogic.com/users/624b52783c77af658ac14ea2/products/6151be8581f301001aa73c3c
 {
@@ -155,7 +155,7 @@ The response object has two methods, **send()** and **json()** that can be used 
 
 ## Deploying Your Function
 
-You can deploy your serverless functions using [Altogic CLI](https://www.altogic.com/docs/category/altogic-cli-guides ). Make sure you have installed Altogic CLI and you have successfully logged into your Altogic account. Please ensure you are in the same folder as your `altogic.json` and run `altogic deploy` to deploy your function. You will be prompted to select which environment to deploy if you have multiple execution environments.
+You can deploy your serverless functions using [Altogic CLI](https://www.altogic.com/docs/altogic-cli). Make sure you have installed Altogic CLI and you have successfully logged into your Altogic account. Please ensure you are in the same folder as your `altogic.json` and run `altogic deploy` to deploy your function. You will be prompted to select which environment to deploy if you have multiple execution environments.
 
 When you run the deploy command, Altogic creates a new image and applies this image to your app's execution environment. Depending on the size of your code and its dependencies, it may take a couple of minutes to build and deploy your function. You can run `altogic get deployments` to get the status of your deployment.
 
